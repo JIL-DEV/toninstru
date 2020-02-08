@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}TonInstru - Users{% endblock %}
+
+{% block body %}
+        {% for user in users %}
+            {{ user.id }}
+            {{ user.firstName }}
+        {% endfor %}
+{% endblock %}
