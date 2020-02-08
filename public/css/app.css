@@ -1,0 +1,11 @@
+
+html, body{ background-color: #1C221F; font-family: Comfortaa, sans-serif; color: #BCB8A8}
+
+.navbar{ width: 100%; background-color: rgba(28, 34, 31, 0.8); position: fixed;
+    padding-top: 12.5px; padding-bottom: 12.5px; transition-duration: 1s}
+.nav-title{ color: #E4E2D8; font-weight:bolder; font-size: 22px; user-select: none }
+.nav-link{display: block; color: #FF4F17; margin-left: auto; font-size: 20px; font-weight: bold; transition-duration: 1s}
+.nav-list{ display: flex; ;padding-right: 100px}
+.space{margin-bottom: 1000px;}
+
+.img-header{width: 100%; background-attachment: fixed}
