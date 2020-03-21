@@ -37,16 +37,25 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/register", name="register")
+     * @Route("/register", name="app_register")
      * @param Request $request
      * @param UserPasswordEncoderInterface $passwordEncoder
      * @return RedirectResponse|Response
      */
     public function createUser(Request $request, UserPasswordEncoderInterface $passwordEncoder){
+
+        //Create new user with data form
         $user = new User();
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
+
         if($form->isSubmitted() && $form->isValid()){
+
+            //Encode password User
+            $password = $passwordEncoder->encodePassword($user, $user->getPassword());
+            $user->setPassword($password);
+
+            //Add User in database
             $this->entityManager->persist($user);
             $this->entityManager->flush();
 
