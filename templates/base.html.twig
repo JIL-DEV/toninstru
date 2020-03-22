@@ -13,11 +13,12 @@
     </head>
     <body>
         {% include 'layout/navbar.html.twig' %}
+        {% include 'layout/modal.html.twig' %}
         <div class="header">
             <img id="img-header" class="img-header" src="{{ asset('img/guitar.jpg') }}" alt="">
         </div>
         <div class="content">
-            <div class="space"></div>
+            <!--<div class="space"></div>-->
             {% block body %}{% endblock %}
         </div>
         {% block javascripts %}{% endblock %}

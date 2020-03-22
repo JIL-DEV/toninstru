@@ -4,6 +4,11 @@
         <a class="nav-item nav-link" href="#">Offres</a>
         <a class="nav-item nav-link" href="#">Demandes</a>
         <a class="nav-item nav-link" href="#">Faire une annonce</a>
-        <a class="nav-item nav-link" href=" {{ path('app_login') }} ">Connexion</a>
+        {% if app.user %}
+            <a class="nav-item nav-link" href="{{ path('app_logout') }}">Déconnection</a>
+        {% else %}
+            <a class="nav-item nav-link" data-toggle="modal" data-target="#modal" href="">Connexion</a>
+        {% endif %}
+
     </div>
 </nav>

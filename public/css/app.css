@@ -1,6 +1,6 @@
-
 html, body { background-color: #1C221F; font-family: Comfortaa, sans-serif; color: #BCB8A8 }
 
+/* navbar */
 .navbar { width: 100%; background-color: rgba(28, 34, 31, 0.8); position: fixed;
     padding-top: 12.5px; padding-bottom: 12.5px; transition-duration: 1s; }
 .nav-title a { color: #E4E2D8; font-weight:bolder; font-size: 22px; user-select: none; }
@@ -8,6 +8,36 @@ html, body { background-color: #1C221F; font-family: Comfortaa, sans-serif; colo
 .nav-link { display: block; color: #FF4F17; margin-left: auto; font-size: 20px; font-weight: bold; transition-duration: 1s; }
 .nav-link:hover { color: #FF4F17; }
 .nav-list { display: flex; ;padding-right: 100px; }
-.space { margin-bottom: 1000px; }
 
-.img-header{ width: 100%; background-attachment: fixed; }
+/* modal */
+.modal-dialog { width: 40%; max-width: 1000px; min-width: 650px; color: #1C221F; }
+.modal-title { margin-left: 30px; font-size: 30px; user-select: none}
+.modal-body { margin-top: 30px; padding-bottom: 0; font-size: 18px; }
+.modal-header, .modal-footer { border: none; }
+.modal-footer { width: 80%; margin: auto; padding-bottom: 40px; padding-top: 0; justify-content: center; }
+.form-login { width: 80%; margin: auto; }
+.form-login label { width: 100%; margin-left: 15px; }
+.form-login input { margin-top: 5px; margin-bottom: 30px; border: 2px #FF4F17 solid; border-radius: 5px; }
+.form-login input:focus { border : #FF4F17; }
+.form-login input:after, .form-login input:before { border : #FF4F17; }
+.btn { border-radius: 5px; border: none; padding: 8px 15px; }
+.btn-login { background-color: #FF4F17; border-color: #FF4F17; color: #E4E2D8; margin: auto; display: block; }
+.btn-login:hover { color: #E4E2D8; }
+.btn-cancel { background-color: #BFC9CA; border-color: #BFC9CA; margin: auto; display: block; }
+.link-register { display: block; margin: auto; color: #424949; width: max-content; }
+.link-register:hover { color: #424949; }
+
+/* header */
+.img-header { width: 100%; background-attachment: fixed; }
+
+/* body */
+.content { width: 85%; margin: auto; padding-top: 50px; }
+.title { margin-left: 15px; margin-bottom: 40px; }
+
+/* form */
+.form-register { width: 40%; min-width: 400px; display: block; margin-left: 100px; }
+.form-input { width: 80%; }
+.form-label { width: 100%; padding-left: 15px; }
+.form-username { width: 100%; }
+.form-username .form-input { width: 100%; }
+.form-username-left, .form-username-right { width: 49%; display: inline-block; margin: 0 }
