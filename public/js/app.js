@@ -21,7 +21,7 @@ $(document).ready(function () {
         }
     }
 
-    $(".scrolling").ready(function () {
+    $("#scroller").after(function () {
         $("html, body").animate({
             scrollTop: $("#img-header").outerHeight()
         },900);
