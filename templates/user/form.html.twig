@@ -3,16 +3,16 @@
 {% block title %}TonInstru - Register{% endblock %}
 
 {% block body %}
-    <h1 class="title">Inscription</h1>
+    <h1 class="title scrolling">Inscription</h1>
 
     {{ form_start(form, {'attr': {"class": "form-register"}}) }}
 
-    <div class="form-username">
-        <div class="form-username-left">
+    <div class="form-group">
+        <div class="form-group-left">
             {{ form_label(form.lastName, "Nom", {'label_attr': {'class': 'form-label'}}) }}
             {{ form_widget(form.lastName, {'attr': {'class': 'form-input'}}) }}
         </div>
-        <div class="form-username-right">
+        <div class="form-group-right">
             {{ form_label(form.firstName, "Prénom", {'label_attr': {'class': 'form-label'}}) }}
             {{ form_widget(form.firstName, {'attr': {'class': 'form-input'}}) }}
         </div>
@@ -24,13 +24,18 @@
     {{ form_widget(form.email, {'attr': {'class': 'form-input'}}) }}
     <div class="form-error">{{ form_errors(form.email) }}</div>
 
-    {{ form_label(form.city, "Ville", {'label_attr': {'class': 'form-label'}}) }}
-    {{ form_widget(form.city, {'attr': {'class': 'form-input'}}) }}
-    <div class="form-error">{{ form_errors(form.city) }}</div>
-
-    {{ form_label(form.postalCode, "Code Postal", {'label_attr': {'class': 'form-label'}}) }}
-    {{ form_widget(form.postalCode, {'attr': {'class': 'form-input'}}) }}
-    <div class="form-error">{{ form_errors(form.postalCode) }}</div>
+    <div class="form-group">
+        <div class="form-group-left">
+            {{ form_label(form.city, "Ville", {'label_attr': {'class': 'form-label'}}) }}
+            {{ form_widget(form.city, {'attr': {'class': 'form-input'}}) }}
+        </div>
+        <div class="form-group-right">
+            {{ form_label(form.postalCode, "Code Postal", {'label_attr': {'class': 'form-label'}}) }}
+            {{ form_widget(form.postalCode, {'attr': {'class': 'form-input'}}) }}
+        </div>
+        <div class="form-error">{{ form_errors(form.city) }}</div>
+        <div class="form-error">{{ form_errors(form.postalCode) }}</div>
+    </div>
 
     {{ form_label(form.phone, "N° de Téléphone", {'label_attr': {'class': 'form-label'}}) }}
     {{ form_widget(form.phone, {'attr': {'class': 'form-input'}}) }}
@@ -44,7 +49,7 @@
     {{ form_widget(form.password.second, {'attr': {'class': 'form-input'}}) }}
     <div class="form-error">{{ form_errors(form.password.second) }}</div>
 
-    {{ form_widget(form.register, { 'label': 'Inscrire', 'attr': {'class': 'btn btn-register'} }) }}
+    {{ form_widget(form.register, { 'label': "S'inscrire", 'attr': {'class': 'btn btn-register'} }) }}
 
     {{ form_end(form) }}
 
