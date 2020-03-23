@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Form\UserType;
 use App\Repository\UserRepository;
+use App\Security\UserAuthenticator;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -12,6 +13,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\Security\Guard\GuardAuthenticatorHandler;
 
 class UserController extends AbstractController
 {
@@ -37,20 +39,46 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/register", name="register")
+     * @Route("/register", name="app_register")
      * @param Request $request
      * @param UserPasswordEncoderInterface $passwordEncoder
+     * @param GuardAuthenticatorHandler $guardHandler
+     * @param UserAuthenticator $userAuthenticator
      * @return RedirectResponse|Response
      */
-    public function createUser(Request $request, UserPasswordEncoderInterface $passwordEncoder){
+    public function createUser(
+        Request $request,
+        UserPasswordEncoderInterface $passwordEncoder,
+        GuardAuthenticatorHandler $guardHandler,
+        UserAuthenticator $userAuthenticator
+    ){
+
+        // Redirect if user is log
+        if ($this->getUser()){
+            return $this->redirectToRoute("home");
+        }
+
+        // Create new user with data form
         $user = new User();
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
+
         if($form->isSubmitted() && $form->isValid()){
+
+            // Encode password User
+            $password = $passwordEncoder->encodePassword($user, $user->getPassword());
+            $user->setPassword($password);
+
+            // Add User in database
             $this->entityManager->persist($user);
             $this->entityManager->flush();
 
-            return $this->redirectToRoute("list_user");
+            return $guardHandler->authenticateUserAndHandleSuccess(
+                $user,
+                $request,
+                $userAuthenticator,
+                "app_user_provider"
+            );
         }
 
         return $this->render('user/form.html.twig',[

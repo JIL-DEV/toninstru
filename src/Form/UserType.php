@@ -26,8 +26,8 @@ class UserType extends AbstractType
             ->add('postalCode', IntegerType::class)
             ->add('email', EmailType::class)
             ->add('phone', TelType::class)
-            ->add('password', RepeatedType::class,[
-                "type" => PasswordType::class,
+            ->add('password', RepeatedType::class, [
+                "type" => PasswordType::class
             ])
             ->add("register", SubmitType::class)
         ;

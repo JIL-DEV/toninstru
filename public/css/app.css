@@ -1,11 +1,46 @@
+html, body { background-color: #1C221F; font-family: Comfortaa, sans-serif; color: #E4E2D8 }
 
-html, body{ background-color: #1C221F; font-family: Comfortaa, sans-serif; color: #BCB8A8}
+/* navbar */
+.navbar { width: 100%; background-color: rgba(28, 34, 31, 0.8); position: fixed;
+    padding-top: 12.5px; padding-bottom: 12.5px; transition-duration: 1s; }
+.nav-title a { color: #E4E2D8; font-weight:bolder; font-size: 22px; user-select: none; }
+.nav-title a:hover { color: #E4E2D8; text-decoration: none; }
+.nav-link { display: block; color: #FF4F17; margin-left: auto; font-size: 20px; font-weight: bold; transition-duration: 1s; }
+.nav-link:hover { color: #FF4F17; }
+.nav-list { display: flex; ;padding-right: 100px; }
 
-.navbar{ width: 100%; background-color: rgba(28, 34, 31, 0.8); position: fixed;
-    padding-top: 12.5px; padding-bottom: 12.5px; transition-duration: 1s}
-.nav-title{ color: #E4E2D8; font-weight:bolder; font-size: 22px; user-select: none }
-.nav-link{display: block; color: #FF4F17; margin-left: auto; font-size: 20px; font-weight: bold; transition-duration: 1s}
-.nav-list{ display: flex; ;padding-right: 100px}
-.space{margin-bottom: 1000px;}
+/* modal */
+.modal-dialog { width: 40%; max-width: 1000px; min-width: 650px; color: #1C221F; }
+.modal-title { margin-left: 30px; font-size: 30px; user-select: none}
+.modal-body { margin-top: 30px; padding-bottom: 0; font-size: 18px; }
+.modal-header, .modal-footer { border: none; }
+.modal-footer { width: 80%; margin: auto; padding-bottom: 40px; padding-top: 0; justify-content: center; }
+.form-login { width: 80%; margin: auto; }
+.form-login label { width: 100%; margin-left: 15px; }
+.form-login input { margin-top: 5px; margin-bottom: 30px; border: 2px #FF4F17 solid; border-radius: 5px; }
+.form-login input:focus { border : #FF4F17; }
+.form-login input:after, .form-login input:before { border : #FF4F17; }
+.btn { border-radius: 5px; border: none; padding: 8px 15px; }
+.btn-login { background-color: #FF4F17; border-color: #FF4F17; color: #FFFFFF; margin: auto; display: block; }
+.btn-login:hover { color: #FFFFFF; }
+.btn-cancel { background-color: #BFC9CA; border-color: #BFC9CA; margin: auto; display: block; }
+.link-register { display: block; margin: auto; color: #424949; width: max-content; }
+.link-register:hover { color: #424949; }
 
-.img-header{width: 100%; background-attachment: fixed}
+/* header */
+.img-header { width: 100%; background-attachment: fixed; }
+
+/* body */
+.content { width: 85%; margin: auto; padding-top: 100px; font-size: 18px; padding-bottom: 100px; color: #E4ECED; }
+.title { margin-left: 15px; margin-bottom: 40px; }
+
+/* form register */
+.form-register { width: 45%; min-width: 400px; display: block; margin-left: 100px; margin-top: 70px; }
+.form-input { width: 80%; padding: 4px 7px; border-radius: 5px; margin: auto auto 30px; }
+.form-label { width: 100%; padding-left: 15px; margin-bottom: 15px; }
+.form-group { width: 100%; margin-bottom: 30px; }
+.form-group .form-input { width: 100%; margin-bottom: 0; }
+.form-group-left, .form-group-right { width: 38.7%; display: inline-table; margin: 0;}
+.form-group-right { margin-left: 2%; }
+.btn-register { background-color: #FF4F17; border-color: #FF4F17; color: #FFFFFF; margin-top: 20px; font-size: 18px; margin-left: 70px; }
+.btn-register:hover { color: #FFFFFF; }

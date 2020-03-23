@@ -1,0 +1,54 @@
+<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+                <div class="modal-header">
+                    <h1 class="modal-title">Connection</h1>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="form-login" class="form-login" action="{{ path('app_login') }}" method="post">
+                        {% if error is defined and error %}
+                            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                        {% endif %}
+
+                        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                            <div class="mb-3">
+                                Vous êtes connecté en tant que {{ app.user.username }}, <a href="{{ path('app_logout') }}">Se déconnecter</a>
+                            </div>
+                        {% else %}
+                            <label for="inputEmail">Adresse e-mail</label>
+                            {% if last_username is defined %}
+                                <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" required autofocus>
+                            {% else %}
+                                <input type="email" name="email" id="inputEmail" class="form-control" required autofocus>
+                            {% endif %}
+                            <label for="inputPassword">Mot de passe</label>
+                            <input type="password" name="password" id="inputPassword" class="form-control" required>
+                            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                            {#
+                                Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+                                See https://symfony.com/doc/current/security/remember_me.html
+                                <div class="checkbox mb-3">
+                                    <label>
+                                        <input type="checkbox" name="_remember_me"> Remember me
+                                    </label>
+                                </div>
+                            #}
+                            <input class="btn btn-login" type="submit" form="form-login" value="Se Connecter">
+                        {% endif %}
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                        <button type="button" class="btn btn-cancel" data-dismiss="modal">Fermer</button>
+                    {% else %}
+                        <a class="link-register" href="{{ path("app_register") }}">S'inscrire</a>
+                    {% endif %}
+                </div>
+
+        </div>
+    </div>
+</div>

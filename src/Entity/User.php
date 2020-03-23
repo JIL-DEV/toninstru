@@ -3,14 +3,15 @@
 namespace App\Entity;
 
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
- * @UniqueEntity("email")
+ * @UniqueEntity("email", message="Cette adresse e-mail est déjà utilisée")
  */
-class User
+class User implements UserInterface
 {
     /**
      * @ORM\Id()
@@ -84,12 +85,12 @@ class User
     /**
      * @ORM\Column(type="simple_array")
      */
-    private $role;
+    private $roles;
 
     public function __construct()
     {
         $this->createdAt = new \DateTime();
-        $this->role = ["ROLE_USER"];
+        $this->roles = ["ROLE_USER"];
     }
 
     public function getId(): ?int
@@ -193,15 +194,42 @@ class User
         return $this;
     }
 
-    public function getRole(): ?array
+    public function setRoles(array $roles): self
     {
-        return $this->role;
-    }
-
-    public function setRole(array $role): self
-    {
-        $this->role = $role;
+        $this->roles = $roles;
 
         return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getRoles()
+    {
+        return $this->roles;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getSalt()
+    {
+        // TODO: Implement getSalt() method.
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getUsername()
+    {
+        return $this->getLastName()." ".$this->getFirstName();
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function eraseCredentials()
+    {
+        // TODO: Implement eraseCredentials() method.
     }
 }
