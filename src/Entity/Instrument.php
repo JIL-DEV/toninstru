@@ -23,21 +23,39 @@ class Instrument
      * @Assert\Length(min=3, minMessage="Le libellé est trop court",
      *     max=100, maxMessage="Le libellé est trop long")
      */
-    private $wording;
+    private $name;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="instruments")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $category;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getWording(): ?string
+    public function getName(): ?string
     {
-        return $this->wording;
+        return $this->name;
     }
 
-    public function setWording(string $wording): self
+    public function setName(string $name): self
     {
-        $this->wording = $wording;
+        $this->name = $name;
+
+        return $this;
+    }
+
+    public function getCategory(): ?Category
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?Category $category): self
+    {
+        $this->category = $category;
 
         return $this;
     }
