@@ -3,5 +3,27 @@
 {% block title %}TonInstru - Category{% endblock %}
 
 {% block body %}
-    {{ form(form) }}
+
+    <h1 id="scroller" class="title">Categories</h1>
+
+    {% if categories is defined %}
+        <ul>
+            {% for category in categories %}
+                <li> {{ category.name }} </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    {{ form_start(form, {'attr': {"class": "form-category"}}) }}
+
+        {{ form_label(form.name, "Nom", {'label_attr': {'class': 'form-label'}}) }}
+        {{ form_widget(form.name, {'attr': {'class': 'form-input'}}) }}
+        <div class="form-error">{{ form_errors(form.name) }}</div>
+
+        {{ form_widget(form.add, { 'label': "Ajouter", 'attr': {'class': 'btn btn-add'} }) }}
+
+    {{ form_end(form) }}
+
+    <div class="space"></div>
+
 {% endblock %}

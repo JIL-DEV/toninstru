@@ -57,7 +57,7 @@ class UserController extends AbstractController
 
         // Redirect if a User is log
         if ($this->getUser()){
-            return $this->redirectToRoute("home");
+            return $this->redirectToRoute("app_home");
         }
 
         // Create new User with data form
