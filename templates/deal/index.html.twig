@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}TonInstru - Offres{% endblock %}
+
+{% block body %}
+
+    <h1 id="scroller" class="title">Offres</h1>
+
+    <ul>
+        {% for deal in deals %}
+            <li> {{ deal.title }} </li>
+        {% endfor %}
+    </ul>
+
+    <div class="space"></div>
+
+{% endblock %}

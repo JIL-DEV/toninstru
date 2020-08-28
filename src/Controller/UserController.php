@@ -28,37 +28,39 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/users", name="list_user")
+     * @Route("/users", name="list_users")
      */
     public function index()
     {
+        // Get all Users
         $users = $this->userRepository->findAll();
+
         return $this->render('user/index.html.twig', [
             'users' => $users,
         ]);
     }
 
     /**
-     * @Route("/register", name="app_register")
-     * @param Request $request
-     * @param UserPasswordEncoderInterface $passwordEncoder
-     * @param GuardAuthenticatorHandler $guardHandler
-     * @param UserAuthenticator $userAuthenticator
-     * @return RedirectResponse|Response
-     */
-    public function createUser(
+    * @Route("/register", name="app_register")
+    * @param Request $request
+    * @param UserPasswordEncoderInterface $passwordEncoder
+    * @param GuardAuthenticatorHandler $guardHandler
+    * @param UserAuthenticator $userAuthenticator
+    * @return RedirectResponse|Response
+    */
+    public function create_user(
         Request $request,
         UserPasswordEncoderInterface $passwordEncoder,
         GuardAuthenticatorHandler $guardHandler,
         UserAuthenticator $userAuthenticator
     ){
 
-        // Redirect if user is log
+        // Redirect if a User is log
         if ($this->getUser()){
-            return $this->redirectToRoute("home");
+            return $this->redirectToRoute("app_home");
         }
 
-        // Create new user with data form
+        // Create new User with data form
         $user = new User();
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);

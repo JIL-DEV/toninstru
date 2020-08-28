@@ -1,14 +1,15 @@
 <nav id="navbar" class="navbar">
-    <div class="col-6 nav-title"><a href="{{ path('app_home') }}">TonInstru</a></div>
-    <div class="col-6 nav-list">
+    <div class="nav-title"><a href="{{ path('app_home') }}">TonInstru</a></div>
+    <div class="nav-list">
         <a class="nav-item nav-link" href="#">Offres</a>
         <a class="nav-item nav-link" href="#">Demandes</a>
         <a class="nav-item nav-link" href="#">Faire une annonce</a>
+        <a class="nav-item nav-link" href="{{ path('list_instruments') }}">Instruments</a>
+        <a class="nav-item nav-link" href="{{ path('list_categories') }}">Categories</a>
         {% if app.user %}
             <a class="nav-item nav-link" href="{{ path('app_logout') }}">Déconnection</a>
         {% else %}
             <a class="nav-item nav-link" data-toggle="modal" data-target="#modal" href="">Connexion</a>
         {% endif %}
-
     </div>
 </nav>

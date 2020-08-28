@@ -10,7 +10,7 @@ Il a été réalisé avec :
 ## Installation
 - Cloner le projet en ssh
 
-- Créer une une base de donnée **toninstru** et insérer le script dans la donnée
+- Créer une une base de donnée **toninstru**
 
 - Executer la commande suivante :  
     'cp .env-example .env'  
@@ -26,12 +26,15 @@ et configurer le fichier .env
 - Lancer le projet  
     'symfony server:start -d'
     
+Un script a été ajouter dans le projet afin d'avoir les données.
 
 ## Instructions
 
 Pour le git, la branche **dev** à été créer pour servir de préproduction. 
 Dans ce cas toute les branches doivent partir de la branche **dev** et les merge requests 
-doivent être en destination de cette branche.
+doivent être en destination de cette branche.  
+
+La branche **master** contiendra **uniquement** les versions stable du projet.
 
 
 S'il a des soucis n'hésitez pas à me contacter.

@@ -33,6 +33,12 @@ class Deal
     private $description;
 
     /**
+     * @ORM\Column(type="string", length=255)
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $image;
+
+    /**
      * @ORM\Column(type="date")
      */
     private $date;
@@ -133,6 +139,18 @@ class Deal
     public function setInstrument(?Instrument $instrument): self
     {
         $this->instrument = $instrument;
+
+        return $this;
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(string $image): self
+    {
+        $this->image = $image;
 
         return $this;
     }
